@@ -14,8 +14,8 @@ export default {
   inputAuthEmail: document.querySelector('[type="email"]'),
   inputAuthPassword: document.querySelector('[type="password"]'),
   submitBtn: document.querySelector('.sign-button-auth-submit'),
-  signUp: document.querySelector('[sign-up]'),
-  signIn: document.querySelector('[sign-in]'),
+  signUp: document.querySelector('[signup]'),
+  signIn: document.querySelector('[signin]'),
   modalAuth: document.querySelector('[data-modal]'),
   userNoneBtn: document.querySelector('.auth-logon-noneuser'),
   userNameBtn: document.querySelector('.auth-logon-isuser'),
@@ -36,15 +36,10 @@ export default {
   listTitleSpan: document.querySelector('.book-list-title-span'),
   sliderUkraine: document.querySelector('.slider-swiper'),
   homePage: document.querySelector('.home-page'),
-  // Modal
   allModal: document.querySelector('#allModal'),
-  // categorieList: document.querySelector('.categorie-list'),
-  // bookList: document.querySelector('.category__books'),
   storageButton: document.querySelector('.add-storage-button'),
   removeStorageBtn: document.querySelector('.remove-modal-btn'),
   storageDescription: document.querySelector('.storage-description'),
-
   idModal: document.querySelector('.about-book-modal'),
   closeModalBtn: document.querySelector('#modal-close'),
-  // idBackdropModal: document.querySelector('.js-backdrop-modal'),
 };

@@ -1,27 +1,27 @@
 <div class="block">
   <div class="block-auth">
     <button data-modal-open class="auth-logon" type="button">
-      <div class="auth-logon-noneuser">
+      <span class="auth-logon-noneuser">
         <p class="auth-logon-noneuser-text">Sign up</p>
         <svg class="auth-logon-icon" width="20" height="20">
           <use href="/src/images/icons.svg#arrow-narrow"></use>
         </svg>
-      </div>
-      <div class="auth-logon-isuser is-hidden">
+      </span>
+      <span class="auth-logon-isuser is-hidden">
         <img src="/src/images/users/stephen.png" alt="Users photo" />
         <p class="auth-logon-isuser-text">User</p>
         <svg class="auth-logon-icon" width="20" height="20">
           <use href="/src/images/icons.svg#caret-down"></use>
         </svg>
-      </div>
+      </span>
     </button>
     <button data-modal-open class="auth-logout is-hidden" type="button">
-      <div class="auth-logout-user">
+      <span class="auth-logout-user">
         <p class="auth-logout-user-text">Log out</p>
         <svg class="auth-button-icon" width="20" height="20">
           <use href="/src/images/icons.svg#arrow-narrow"></use>
         </svg>
-      </div>
+      </span>
     </button>
   </div>
   <div class="backdrop-auth is-hidden" data-modal>
@@ -74,12 +74,8 @@
         </div>
         <button type="submit" class="sign-button-auth-submit">Sign up</button>
         <div class="sign-buttons-auth">
-          <button type="submit" class="sign-button-auth" sign-up>
-            Sign up
-          </button>
-          <button type="submit" class="sign-button-auth" sign-in>
-            Sign in
-          </button>
+          <button type="submit" class="sign-button-auth" signup>Sign up</button>
+          <button type="submit" class="sign-button-auth" signin>Sign in</button>
         </div>
       </form>
     </div>
