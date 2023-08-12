@@ -59,10 +59,12 @@
       <nav class="mob-header-nav">
         <ul class="mob-menu-container">
           <li>
-            <a class="home-link current-color" href="./index.html">Home</a>
+            <a class="home-link-mobile" href="./index.html">Home</a>
           </li>
           <li>
-            <a class="shoping-link" href="/src/shopping-list.html"
+            <a
+              class="shoping-link-mobile current-color"
+              href="/src/shopping-list.html"
               >Shopping list
               <svg class="bag-icon" width="20" height="20">
                 <use href="/src/images/icons.svg#bag"></use>
@@ -77,17 +79,23 @@
 </header>
 <script>
   const linksAll = document.querySelectorAll('.main-header-link');
+
   const homeLink = document.querySelector('.home-link');
   const shoppingLink = document.querySelector('.shoping-link');
+  const homeLinkMobile = document.querySelector('.home-link-mobile');
+  const shoppingLinkMobile = document.querySelector('.shoping-link-mobile');
 
   linksAll.forEach(element => {
     if (document.title === 'Book Shelf') {
       shoppingLink.classList.remove('current-color');
       homeLink.classList.add('current-color');
+      shoppingLinkMobile.classList.remove('current-color');
+      homeLinkMobile.classList.add('current-color');
     } else if (document.title === 'Shopping List') {
-      console.log(document.title);
       shoppingLink.classList.add('current-color');
       homeLink.classList.remove('current-color');
+      shoppingLinkMobile.classList.add('current-color');
+      homeLinkMobile.classList.remove('current-color');
     }
   });
 </script>
