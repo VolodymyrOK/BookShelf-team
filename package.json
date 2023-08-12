@@ -2,20 +2,20 @@
   "name": "bookshelf",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://AndreiGutnik.github.io/BookShelf",
+  "homepage": "https://VolodymyrOK.github.io/BookShelf",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /BookShelf/"
+    "build": "parcel build src/*.html --public-url /BookShelf-team/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AndreiGutnik/BookShelf.git"
+    "url": "git+https://github.com/VolodymyrOK/BookShelf-team.git"
   },
   "keywords": [],
-  "author": "Andrii Hutnyk <andreigutnik@gmail.com>",
+  "author": "Volodymyr Konoriev <vladikon70@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AndreiGutnik/BookShelf/issues"
+    "url": "https://github.com/VolodymyrOK/BookShelf-team/issues"
   },
   "dependencies": {
     "axios": "^1.4.0",
