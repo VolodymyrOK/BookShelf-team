@@ -75,14 +75,13 @@
     border: 2px solid rgba(79, 46, 232, 0.4);
     border-radius: 16px;
     background-color: var(--bg-white-header);
-		
-		&:hover,
-		&:focus {
-			transform: scale(1.01);
-			border-color: var( --color-text-categor-hover);
-		}
-	}
 
+    &:hover,
+    &:focus {
+      transform: scale(1.01);
+      border-color: var(--color-text-categor-hover);
+    }
+  }
 
   .shoplist-book-img {
     margin: 14px;
@@ -295,7 +294,7 @@
   }
 }
 
-@media screen and (min-width: 0) and (max-width: 1440px) {
+@media screen and (min-width: 0) and (max-width: 1439px) {
   .shoplist-support {
     display: none;
   }
@@ -376,11 +375,11 @@
     border-radius: 16px;
     background-color: var(--bg-white-header);
 
-		&:hover,
-		&:focus {
-			transform: scale(1.01);
-			border-color: var( --color-text-categor-hover);
-		}
+    &:hover,
+    &:focus {
+      transform: scale(1.01);
+      border-color: var(--color-text-categor-hover);
+    }
   }
 
   .shoplist-book-img {
