@@ -114,13 +114,13 @@ if (localStorage.getItem(BOOKS_IN_STORAGE)) {
 
   // Pagination
 
-  const paginationContainer = document.querySelector('.pagination-container');
+  const paginationContainer = document.querySelector('.tui-pagination');
 
   if (paginationContainer) {
     if (shoppingList.length === 0) {
-      paginationContainer.classList.add('pagination-hidden');
+      paginationContainer.classList.add('tui-pagination');
     } else {
-      paginationContainer.classList.remove('pagination-hidden');
+      paginationContainer.classList.remove('tui-pagination');
     }
   }
 }

@@ -44,7 +44,7 @@
 }
 
 .shopping-list-empty-image {
-  background-image: url(../images/mobile/shopping_list/books.png);
+  background-image: url(../images/shopping-list-empty/mobile/books.png);
   background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 265px;
@@ -55,7 +55,7 @@
   (min-resolution: 192dpi),
   (min-resolution: 2dppx) {
   .shopping-list-empty-image {
-    background-image: url(../images/mobile/shopping_list/books@2x.png);
+    background-image: url(../images/shopping-list-empty/mobile/books@2x.png);
     background-size: 265px 198px;
   }
 }
