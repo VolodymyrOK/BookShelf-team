@@ -117,11 +117,11 @@ button {
 
 .shop-modal-item {
   filter: var(--color-filter);
-  transition: filter 0.3s ease;
+  transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .shop-modal-item:hover {
-  filter: $icons-shadow;
+  scale: 0.95;
 }
 
 .modal-id-buttons {
