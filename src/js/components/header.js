@@ -2,6 +2,7 @@ import refs from '../refs';
 const { burgerBtn, iconClose, iconBurger, mobileMenu } = refs;
 ///////////////////////////Перемикач кнопки бургер//////////////////////////////
 let isOpen = true;
+booksOrdered();
 burgerBtn.addEventListener('click', handlerChangeBtnMenu);
 function handlerChangeBtnMenu() {
   const refs = {
@@ -25,3 +26,12 @@ function handlerChangeBtnMenu() {
     isOpen = true;
   }
 }
+
+function booksOrdered() {
+  const storageArr = JSON.parse(localStorage.getItem('storage-data'));
+  const booksInList = storageArr.length;
+  const qtyOrderedBooks = document.querySelectorAll('.purchased-books');
+  qtyOrderedBooks.forEach(content => (content.textContent = booksInList));
+}
+
+export { booksOrdered };

@@ -3,13 +3,14 @@ import { openModalId } from './modals';
 import refs from './refs';
 import onError from './error';
 import BooksService from './BooksService';
+import { booksOrdered } from './components/header';
 
-import amazonPng from '../images/png-icons/shops/amazon-icon1x.png';
-import amazonPng2x from '../images/png-icons/shops/amazon-icon2x.png';
-import appleBookPng from '../images/png-icons/shops/applebook-icon1x.png';
-import appleBookPng2x from '../images/png-icons/shops/applebook-icon2x.png';
-import bookShopPng from '../images/png-icons/shops/bookshop-icon1x.png';
-import bookShopPng2x from '../images/png-icons/shops/bookshop-icon2x.png';
+import amazonPng from '../images/shopping/amazon-icon1x.png';
+import amazonPng2x from '../images/shopping/amazon-icon2x.png';
+import appleBookPng from '../images/shopping/applebook-icon1x.png';
+import appleBookPng2x from '../images/shopping/applebook-icon2x.png';
+import bookShopPng from '../images/shopping/bookshop-icon1x.png';
+import bookShopPng2x from '../images/shopping/bookshop-icon2x.png';
 
 const {
   allModal,
@@ -83,6 +84,7 @@ function storageCheck() {
   if (!storageArr || storageArr.length === 0) {
     storageButton.style.display = 'block';
     removeStorageBtn.style.display = 'none';
+    booksOrdered();
     return;
   } else {
     const objToFind = storageArr.find(obj => obj.id === idToFind);
@@ -94,6 +96,7 @@ function storageCheck() {
       removeStorageBtn.style.display = 'block';
     }
   }
+  booksOrdered();
 }
 
 // Функція для створення розмітки модалки
