@@ -1,8 +1,12 @@
 import { booksOrdered } from './header';
+import Pagination from 'tui-pagination';
+console.log(Pagination);
+
 const BOOKS_IN_STORAGE = 'storage-data';
 const shoppingListContainer = document.querySelector(
   '.shopping-list-empty-page'
 );
+
 if (localStorage.getItem(BOOKS_IN_STORAGE)) {
   const shoppingListJSON = localStorage.getItem(BOOKS_IN_STORAGE);
 
@@ -95,26 +99,44 @@ if (localStorage.getItem(BOOKS_IN_STORAGE)) {
 
     if (shoppingList.length === 0) {
       newShoppingListContainer.replaceWith(shoppingListContainer);
-      // paginationContainer.classList.add('pagination-hidden');
+      paginationContainer.classList.add('is-hidden');
     }
     booksOrdered();
   }
 
-  function updateBookOnStorage() {
-    localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
-    booksOrdered();
-  }
+  // function updateBookOnStorage() {
+  //   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+  //   booksOrdered();
+  // }
 
-  if (shoppingList.length === 0) {
-    if (!document.querySelector('.shopping-list-container')) {
-      document.body.appendChild(newShoppingListContainer);
-    }
-    newShoppingListContainer.replaceWith(shoppingListContainer);
-  }
+  // if (shoppingList.length === 0) {
+  //   if (!document.querySelector('.shopping-list-container')) {
+  //     document.body.appendChild(newShoppingListContainer);
+  //   }
+  //   newShoppingListContainer.replaceWith(shoppingListContainer);
+  // }
 
   // Pagination
 
   const paginationContainer = document.querySelector('.tui-pagination');
+
+  const pagination = new Pagination(paginationContainer, {
+    // totalItems: totalItems,
+    // itemsPerPage: itemsPerPage,
+    // visiblePages: visiblePages,
+    // centerAlign: true,
+    // page: currentPage,
+  });
+
+  console.log(pagination);
+
+  pagination.on('afterMove', eventData => {
+    console.log(eventData);
+    currentPage = eventData.page;
+    const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    createFullCart(storageData, currentPage);
+    return currentPage;
+  });
 
   if (paginationContainer) {
     if (shoppingList.length === 0) {

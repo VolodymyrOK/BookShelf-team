@@ -324,7 +324,7 @@ body.dark .shoplist-icon-bookshop {
   }
 
   .shopping-list-empty-image {
-    background-image: url(../images/tablet/books.png);
+    background-image: url(../images/shopping-list-empty/tablet/books.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     width: 322px;
@@ -335,7 +335,7 @@ body.dark .shoplist-icon-bookshop {
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
     .shopping-list-empty-image {
-      background-image: url(../images/tablet/books@2x.png);
+      background-image: url(../images/shopping-list-empty/tablet/books@2x.png);
       background-size: 322px 241px;
     }
   }
