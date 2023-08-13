@@ -1,3 +1,4 @@
+import { booksOrdered } from './header';
 const BOOKS_IN_STORAGE = 'storage-data';
 const shoppingListContainer = document.querySelector(
   '.shopping-list-empty-page'
@@ -44,7 +45,7 @@ if (localStorage.getItem(BOOKS_IN_STORAGE)) {
       </li>
       <li class="shoplist-icons-li">
         <a href="${marketAppleBooks}" target="blank">
-          <div class="shoplist-icon-barnesAndNoble"></div>
+          <div class="shoplist-icon-apple"></div>
         </a>
       </li>
       <li class="shoplist-icons-li">
@@ -96,10 +97,12 @@ if (localStorage.getItem(BOOKS_IN_STORAGE)) {
       newShoppingListContainer.replaceWith(shoppingListContainer);
       // paginationContainer.classList.add('pagination-hidden');
     }
+    booksOrdered();
   }
 
   function updateBookOnStorage() {
     localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
+    booksOrdered();
   }
 
   if (shoppingList.length === 0) {
@@ -121,6 +124,7 @@ if (localStorage.getItem(BOOKS_IN_STORAGE)) {
     }
   }
 }
+
 const booksOnPage = 3;
 const storageArr = JSON.parse(localStorage.getItem(BOOKS_IN_STORAGE));
 const booksInList = storageArr.length;

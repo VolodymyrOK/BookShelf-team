@@ -161,6 +161,13 @@
   padding: 8px 16px;
   text-transform: uppercase;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:is(:hover, :focus) {
+    transform: scale(0.95);
+    background-color: var(--font-color-yellow);
+    color: var(--font-color1);
+    font-weight: 500;
+    border-radius: 36px;
+  }
 }
 .home-link {
   color: var(--font-color);
@@ -173,13 +180,9 @@
   }
 }
 
-.home-link:hover,
-.home-link:focus {
-  transform: scale(0.95);
-}
-
 .shoping-link,
 .shoping-link-mobile {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -192,6 +195,30 @@
   letter-spacing: -0.04em;
   text-transform: uppercase;
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:is(:hover, :focus) {
+    transform: scale(0.95);
+    background-color: var(--font-color-yellow);
+    color: var(--font-color1);
+    font-weight: 500;
+    border-radius: 36px;
+    & .bag-icon {
+      fill: var(--font-color1);
+    }
+  }
+  & > sup {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: -7px;
+    font-size: 12px;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--font-color-violet);
+    color: var(--font-color-white);
+    border-radius: 12px;
+    width: 26px;
+    height: 20px;
+  }
 }
 
 .shoping-link {
@@ -208,11 +235,6 @@
       fill: var(--font-color-white);
     }
   }
-}
-
-.shoping-link:hover,
-.shoping-link:focus {
-  transform: scale(0.95);
 }
 
 .bag-icon {
@@ -320,7 +342,6 @@
   .shoping-link {
     width: 156px;
     height: 34px;
-    // color: var(--font-color);
   }
 
   .block-btn {

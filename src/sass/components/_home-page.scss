@@ -10,6 +10,7 @@
     width: 996px;
   }
 }
+
 @media screen and (min-width: 1440px) {
   .top-books-list {
     width: 996px;
@@ -26,6 +27,7 @@
   margin-bottom: 40px;
   text-align: left;
 }
+
 .book-list-title-span {
   color: var(--color-violet);
   font-family: 'DM Sans Bold', sans-serif;
@@ -34,6 +36,7 @@
   line-height: 1.8;
   margin-bottom: 40px;
 }
+
 .top-books-list {
   display: flex;
   flex-wrap: nowrap;
@@ -53,11 +56,20 @@
     gap: 24px;
   }
 }
+
 .thumb {
   width: 335px;
   height: 485px;
   position: relative;
+  cursor: pointer;
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  &:hover {
+    box-shadow: 0px 0px 26px 7px rgba(79, 46, 232, 0.37);
+    -webkit-box-shadow: 0px 0px 26px 7px rgba(79, 46, 232, 0.37);
+    -moz-box-shadow: 0px 0px 26px 7px rgba(79, 46, 232, 0.37);
+  }
 }
+
 @media screen and (min-width: 768px) {
   .thumb {
     width: 218px;
@@ -70,6 +82,7 @@
     height: 256px;
   }
 }
+
 .thumb img {
   height: 100%;
   width: 100%;
@@ -77,9 +90,11 @@
   display: block;
   border-radius: 8px;
 }
+
 .card {
   margin-bottom: 40px;
 }
+
 @media screen and (min-width: 768px) {
   .card {
     display: flex;
@@ -94,6 +109,7 @@ button {
   display: block;
   margin-left: auto;
 }
+
 .book-list-name {
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -107,6 +123,7 @@ button {
   line-height: 1.125;
   overflow: hidden;
 }
+
 .book-list-author {
   letter-spacing: -0.04em;
   color: var(--font-color-grey);
@@ -115,6 +132,7 @@ button {
   margin-top: 4px;
   line-height: 1.16;
 }
+
 @media screen and (min-width: 768px) {
   .book-list-name {
     max-width: 218px;
@@ -123,6 +141,7 @@ button {
     max-width: 218px;
   }
 }
+
 @media (min-width: 1440px) {
   .book-list-name,
   .book-list-author {
@@ -139,9 +158,11 @@ button {
   letter-spacing: 0.42px;
   text-transform: uppercase;
 }
+
 .book-list-category:not(:first-child) {
   margin-top: 40px;
 }
+
 .load-more {
   cursor: pointer;
   letter-spacing: -0.01em;
@@ -162,15 +183,19 @@ button {
   font-family: 'DM Sans Bold';
   line-height: 1.28;
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
-    scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    scale 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
+  &:is(:hover, :focus) {
+    scale: 0.99;
+    background-color: #4f2ee8;
+    color: #ffffff;
+    box-shadow: 0px 0px 23px 7px rgba(79, 46, 232, 0.46);
+    -webkit-box-shadow: 0px 0px 23px 7px rgba(79, 46, 232, 0.46);
+    -moz-box-shadow: 0px 0px 23px 7px rgba(79, 46, 232, 0.46);
+  }
 }
-.load-more:hover,
-.load-more:focus {
-  scale: 0.95;
-  background-color: #4f2ee8;
-  color: #ffffff;
-}
+
 @media screen and (min-width: 768px) {
   .load-more {
     margin-top: 20px;
@@ -184,17 +209,19 @@ button {
     column-gap: 25px;
   }
 }
+
 @media (min-width: 1440px) {
   .books0 {
     column-gap: 24px;
   }
 }
+
 .all-book-popup {
-  cursor: pointer;
+  position: absolute;
   height: 70px;
   width: 100%;
-  opacity: 0;
-  visibility: hidden;
+  bottom: 0;
+  overflow-y: hidden;
   color: #111;
   text-align: center;
   text-transform: uppercase;
@@ -204,19 +231,17 @@ button {
   padding: 26px 52px;
   font-size: 14px;
   font-family: 'DM Sans Medium';
-  line-height: 18px;
+  line-height: calc(18 / 14);
+  cursor: zoom-in;
+  opacity: 0;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  position: absolute;
-  bottom: 0;
-  transform: translateY(100%);
 }
 
-.thumb:hover .all-book-popup,
-.thumb:focus .all-book-popup {
-  visibility: visible;
+.thumb:is(:hover, :focus) .all-book-popup {
+  overflow-y: visible;
   opacity: 1;
-  transform: translateY(0);
 }
+
 @media screen and (min-width: 768px) {
   .thumb .book-popup {
     bottom: 95px;
@@ -228,6 +253,7 @@ button {
     width: 218px;
   }
 }
+
 @media (min-width: 1440px) {
   .all-book-popup {
     width: 180px;

@@ -17,13 +17,14 @@ body.light {
     #4f2ee8 0%,
     #dcdcdc 100%
   );
-  --border-color: #202024; //Добавить в переменные в main
-  --background-color-submit: #111111; //Добавить в переменные в main
-  --text-color-submit: #f3f3f3; //Добавить в переменные в main
-  --text-buttons-submit: rgba(17, 17, 17, 0.5); //Добавить в переменные в main
-  --text-color-auth-form: #111111; //Добавить в переменные в main
-  --background-color-auth-form: #f6f6f6; //Добавить в переменные в main
-  --background-color-submit-active: #333333; //Добавить в переменные в main
+  // ========= Authorization ===========================================
+  --border-color: #202024;
+  --background-color-submit: #111111;
+  --text-color-submit: #f3f3f3;
+  --text-buttons-submit: rgba(17, 17, 17, 0.5);
+  --text-color-auth-form: #111111;
+  --background-color-auth-form: #f6f6f6;
+  --background-color-submit-active: #333333;
   // ========= /Authorization ===========================================
   // ===========/Category============================================
   --color-text-category: rgba(17, 17, 17, 0.6);
@@ -31,12 +32,13 @@ body.light {
   --color-line-scroll: #e0e0e0;
   // ===========/Category============================================
   --color-pagination-fill: #b4afaf;
-  --filter: brightness(0) invert(0);
-	--color-filter: brightness(1) invert(0);
-
+  --filter: brightness(1) invert(0);
+  --color-filter: brightness(1) invert(0);
+  --font-color-shoppinglist: rgba(0, 0, 0, 0.6);
 }
+
 body.dark {
-  --background-color: #000000;
+  --background-color: #111111;
   --background-color1: #202024;
   --font-color: #ffffff;
   --background-checkbox-theme: linear-gradient(
@@ -44,13 +46,14 @@ body.dark {
     #4f2ee8 0%,
     #686868 100%
   );
-  --border-color: #f6f6f6; //Добавить в переменные в main
-  --background-color-submit: #f6f6f6; //Добавить в переменные в main
-  --text-color-submit: #202024; //Добавить в переменные в main
+  // ========= Authorization ===========================================
+  --border-color: #f6f6f6;
+  --background-color-submit: #f6f6f6;
+  --text-color-submit: #202024;
   --text-buttons-submit: rgba(246, 246, 246, 0.5);
-  --text-color-auth-form: #f6f6f6; //Добавить в переменные в main
-  --background-color-auth-form: #202024; //Добавить в переменные в main
-  --background-color-submit-active: #f6f6f6; //Добавить в переменные в main
+  --text-color-auth-form: #f6f6f6;
+  --background-color-auth-form: #202024;
+  --background-color-submit-active: #f6f6f6;
   // ========= /Authorization ===========================================
   // ===========/Category============================================
   --color-text-category: rgba(255, 255, 255, 0.6);
@@ -59,6 +62,6 @@ body.dark {
   // ===========/Category============================================
   --color-pagination-fill: #ffffff;
   --filter: brightness(0) invert(1);
-	--color-filter: invert(1);
-
+  --color-filter: invert(1);
+  --font-color-shoppinglist: rgba(255, 255, 255, 0.6);
 }
