@@ -4,6 +4,7 @@ import emptyMob1x from '/src/images/shopping-list-empty/mobile/books.png';
 import emptyMob2x from '/src/images/shopping-list-empty/mobile/books@2x.png';
 
 import Pagination from 'tui-pagination';
+import { booksOrdered } from './header';
 
 const cartEl = document.querySelector('.js-shopping-cart');
 const cartListEl = document.querySelector('.shopping-list-container');
@@ -149,8 +150,8 @@ function initPagination(totalItems) {
 
 // Функція видалення картки + виклик функції перемальовки сторінки
 function deleteCard(evt) {
-  console.log(evt.target.classList.contains('shoplist-trash'));
   if (evt.target.classList.contains('shoplist-trash')) {
+    if (!confirm('Are you sure?')) return;
     const card = evt.target.closest('.js-card');
     const bookId = card.dataset.bookId;
     const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
@@ -171,6 +172,7 @@ function deleteCard(evt) {
       card.remove();
       createShoppingList();
     }
+    booksOrdered();
   }
 }
 

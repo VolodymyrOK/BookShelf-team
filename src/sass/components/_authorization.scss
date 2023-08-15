@@ -286,15 +286,15 @@
 // ===============================================================
 
 @media screen and (min-width: 0) and (max-width: 767px) {
-  .block {
+  .header-container {
     position: relative;
   }
 
   .block-auth {
     display: none;
     position: absolute;
-    top: 32px;
-    left: -346px;
+    top: 61px;
+    left: 8px;
   }
   .auth-logon {
     display: flex;
@@ -302,7 +302,7 @@
   }
   .auth-logout {
     position: absolute;
-    top: 82px;
+    top: 50vh;
     left: 8px;
     z-index: -1;
     scale: 1;
