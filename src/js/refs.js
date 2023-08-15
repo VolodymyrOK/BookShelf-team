@@ -41,5 +41,6 @@ export default {
   removeStorageBtn: document.querySelector('.remove-modal-btn'),
   storageDescription: document.querySelector('.storage-description'),
   idModal: document.querySelector('.about-book-modal'),
+  idModalBackdrop: document.querySelector('.backdrop-modal'),
   closeModalBtn: document.querySelector('#modal-close'),
 };
