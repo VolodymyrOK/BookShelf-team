@@ -1,154 +1,212 @@
-import { booksOrdered } from './header';
+import emptyDtTab1x from '/src/images/shopping-list-empty/tablet/books.png';
+import emptyDtTab2x from '/src/images/shopping-list-empty/tablet/books@2x.png';
+import emptyMob1x from '/src/images/shopping-list-empty/mobile/books.png';
+import emptyMob2x from '/src/images/shopping-list-empty/mobile/books@2x.png';
+
 import Pagination from 'tui-pagination';
-console.log(Pagination);
 
-const BOOKS_IN_STORAGE = 'storage-data';
-const shoppingListContainer = document.querySelector(
-  '.shopping-list-empty-page'
-);
+const cartEl = document.querySelector('.js-shopping-cart');
+const cartListEl = document.querySelector('.shopping-list-container');
+const paginationContainer = document.getElementById('pagination');
 
-if (localStorage.getItem(BOOKS_IN_STORAGE)) {
-  const shoppingListJSON = localStorage.getItem(BOOKS_IN_STORAGE);
+const STORAGE_KEY = 'storage-data';
 
-  let shoppingList = JSON.parse(shoppingListJSON);
+let page;
+let currentPage = 1;
+let itemsPerPage;
+let visiblePages;
+let resizeTimeout;
 
-  const shoplistBooks = shoppingList.map(makeShoplistMarkup);
+cartListEl.addEventListener('click', deleteCard);
+window.addEventListener('resize', changePagOptionsByScreenWidth);
+document.addEventListener('DOMContentLoaded', firstPageLoaded);
 
-  // CreateMarkup
+createShoppingList();
 
-  function makeShoplistMarkup(shoppingList) {
-    const {
-      book_image,
-      author,
-      list_name,
-      description,
-      title,
-      id,
-      marketAmazon,
-      marketAppleBooks,
-      marketBookshop,
-    } = shoppingList;
+function createShoppingList() {
+  const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (!storageData || storageData.length === 0) {
+    createEmptyCart();
+  } else {
+    const totalItems = storageData.length;
+    initPagination(totalItems);
+    createFullCart(storageData, currentPage);
+  }
+}
 
-    const shoplistBookContainer = document.createElement('div');
-    shoplistBookContainer.classList.add('shoplist-book-container');
-    shoplistBookContainer.dataset.id = id;
+// Функція створення порожнього кошика
+function createEmptyCart() {
+  const markup = `
+    <div class="cart-empty">
+      <p class="cart-empty__text">
+        This page is empty, add some books and proceed to order.
+      </p>
+      <picture>
+        <source
+          srcset="
+            ${emptyDtTab1x} 1x,
+            ${emptyDtTab2x} 2x
+          "
+          media="(min-width: 768px)"
+        />
+        <img
+          srcset="
+            ${emptyMob1x} 1x,
+            ${emptyMob2x} 2x
+            "
+          src="${emptyMob1x}"
+          alt="Empty cart"
+          loading="lazy"
+          class="cart-empty__img"
+        />
+      </picture>
+    </div>`;
 
-    const shoplistMarkup = `<img src="${book_image}" class="shoplist-book-img">
-        <div class="shoplist-desc-container">
-          <h4 class="shoplist-book-title">${title}</h4>
-          <p class="shoplist-book-genre">${list_name}</p>
-          <p class="shoplist-book-description">${description}</p>
-           <p class="shoplist-book-author">${author}</p>
-        </div>
-        <div class="shoplist-icons">
-    <ul class="shoplist-icons-list">
-      <li class="shoplist-icons-li">
-        <a href="${marketAmazon}" target="blank">
-          <div class="shoplist-icon-amazon"></div>
-        </a>
-      </li>
-      <li class="shoplist-icons-li">
-        <a href="${marketAppleBooks}" target="blank">
-          <div class="shoplist-icon-apple"></div>
-        </a>
-      </li>
-      <li class="shoplist-icons-li">
-        <a href="${marketBookshop}" target="blank">
-          <div class="shoplist-icon-bookshop"></div>
-        </a>
-      </li>
-    </ul>
+  cartEl.innerHTML = markup;
+}
+
+// Функція створення повного кошика
+function createFullCart(arr, page) {
+  const startIndex = (page - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const itemsOnPage = arr.slice(startIndex, endIndex);
+
+  const markup = itemsOnPage
+    .map(
+      ({
+        book_image,
+        author,
+        list_name,
+        description,
+        title,
+        id,
+        marketAmazon,
+        marketAppleBooks,
+        marketBookshop,
+      }) =>
+        `<li class="shoplist-book-container card js-card" data-book-id="${id}">
+  <picture>
+    <img
+      loading="lazy"
+      src="${
+        book_image
+          ? book_image
+          : './images/placeholders/very-small-placeholder.png'
+      }"
+      alt="${title}"
+      class="shoplist-book-img"
+    />
+  </picture>
+  <div class="shoplist-desc-container">
+    <h4 class="shoplist-book-title">${title.trim()}</h4>
+    <p class="shoplist-book-genre">${list_name.trim()}</p>
+    <p class="shoplist-book-description">${description.trim()}</p>
+    <div class="shoplist-icons">
+      <p class="shoplist-book-author">${author.trim()}</p>
+      <ul class="shoplist-icons-list">
+        <li class="shoplist-icons-li">
+          <a href="${marketAmazon}" target="blank">
+            <div class="shoplist-icon-amazon"></div>
+          </a>
+        </li>
+        <li class="shoplist-icons-li">
+          <a href="${marketAppleBooks}" target="blank">
+            <div class="shoplist-icon-apple"></div>
+          </a>
+        </li>
+        <li class="shoplist-icons-li">
+          <a href="${marketBookshop}" target="blank">
+            <div class="shoplist-icon-bookshop"></div>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <button class="shoplist-trash"></button>
   </div>
-        <div class="shoplist-trash"></div>
-`;
+</li>`
+    )
+    .join('');
+  cartListEl.innerHTML = markup;
+}
 
-    shoplistBookContainer.innerHTML = shoplistMarkup;
-
-    return shoplistBookContainer;
-  }
-
-  // Create new container and replace markup
-
-  const newShoppingListContainer = document.createElement('div');
-  newShoppingListContainer.classList.add('shopping-list-container');
-  shoplistBooks.forEach(book => {
-    newShoppingListContainer.appendChild(book);
-  });
-
-  shoppingListContainer.replaceWith(newShoppingListContainer);
-
-  // Add trash to each element
-
-  const shoplistTrash = document.querySelectorAll('.shoplist-trash');
-
-  shoplistTrash.forEach(trash => {
-    trash.addEventListener('click', removesBookFromShoppingList);
-  });
-
-  // Update Local Storage
-
-  function removesBookFromShoppingList(event) {
-    const id = event.target.closest('.shoplist-book-container').dataset.id;
-    shoppingList = shoppingList.filter(book => book.id !== id);
-    localStorage.setItem(BOOKS_IN_STORAGE, JSON.stringify(shoppingList));
-    newShoppingListContainer.removeChild(
-      event.target.closest('.shoplist-book-container')
-    );
-
-    // Fix updating on the page
-
-    if (shoppingList.length === 0) {
-      newShoppingListContainer.replaceWith(shoppingListContainer);
-      paginationContainer.classList.add('is-hidden');
-    }
-    booksOrdered();
-  }
-
-  // function updateBookOnStorage() {
-  //   localStorage.setItem('shoppingList', JSON.stringify(shoppingList));
-  //   booksOrdered();
-  // }
-
-  // if (shoppingList.length === 0) {
-  //   if (!document.querySelector('.shopping-list-container')) {
-  //     document.body.appendChild(newShoppingListContainer);
-  //   }
-  //   newShoppingListContainer.replaceWith(shoppingListContainer);
-  // }
-
-  // Pagination
-
-  const paginationContainer = document.querySelector('.tui-pagination');
-
+// Функція ініціалізації пагінації
+function initPagination(totalItems) {
   const pagination = new Pagination(paginationContainer, {
-    // totalItems: totalItems,
-    // itemsPerPage: itemsPerPage,
-    // visiblePages: visiblePages,
-    // centerAlign: true,
-    // page: currentPage,
+    totalItems: totalItems,
+    itemsPerPage: itemsPerPage,
+    visiblePages: visiblePages,
+    centerAlign: true,
+    page: currentPage,
   });
-
-  console.log(pagination);
-
+  // Обробка подій пагінації та оновлення списку
   pagination.on('afterMove', eventData => {
-    console.log(eventData);
     currentPage = eventData.page;
     const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
     createFullCart(storageData, currentPage);
     return currentPage;
   });
+}
 
-  if (paginationContainer) {
-    if (shoppingList.length === 0) {
-      paginationContainer.classList.add('tui-pagination');
+// Функція видалення картки + виклик функції перемальовки сторінки
+function deleteCard(evt) {
+  console.log(evt.target.classList.contains('shoplist-trash'));
+  if (evt.target.classList.contains('shoplist-trash')) {
+    const card = evt.target.closest('.js-card');
+    const bookId = card.dataset.bookId;
+    const storageData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    const newStorageData = storageData.filter(object => object.id !== bookId);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(newStorageData));
+    if (!newStorageData.length) {
+      card.remove();
+      createEmptyCart();
+    }
+
+    const countPages = Math.ceil(newStorageData.length / itemsPerPage);
+    if (countPages >= currentPage) {
+      card.remove();
+      createShoppingList();
     } else {
-      paginationContainer.classList.remove('tui-pagination');
+      page = countPages;
+      currentPage = countPages;
+      card.remove();
+      createShoppingList();
     }
   }
 }
 
-const booksOnPage = 3;
-const storageArr = JSON.parse(localStorage.getItem(BOOKS_IN_STORAGE));
-const booksInList = storageArr.length;
+// Функція зміни кількості відображення карток на сторінці в залежності від ширини екрану
+function changePagOptionsByScreenWidth() {
+  const screenWidth = window.innerWidth;
+  if (screenWidth < 768) {
+    visiblePages = 1;
+    itemsPerPage = 4;
+    clearTimeout(resizeTimeout);
 
-export { booksOnPage, booksInList };
+    resizeTimeout = setTimeout(function () {
+      createShoppingList();
+    }, 200);
+  } else if (screenWidth >= 768) {
+    itemsPerPage = 3;
+    visiblePages = 3;
+    clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(function () {
+      createShoppingList();
+    }, 200);
+  }
+}
+
+// Функція зміни кількості відображення карток на сторінці в залежності від ширини екрану при першої загрузці сторінки
+function firstPageLoaded() {
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 768) {
+    visiblePages = 1;
+    itemsPerPage = 4;
+    createShoppingList();
+  } else if (screenWidth >= 768) {
+    itemsPerPage = 3;
+    visiblePages = 3;
+    createShoppingList();
+  }
+}
