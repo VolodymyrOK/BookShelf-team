@@ -219,27 +219,27 @@ userLogon.addEventListener('click', () => {
     modal: document.querySelector('[data-modal]'),
   };
 
-  refs.openModalBtn.addEventListener('click', toggleModal);
-  refs.closeModalBtn.addEventListener('click', toggleModal);
+  refs.openModalBtn.addEventListener('click', openModal);
+  refs.closeModalBtn.addEventListener('click', closeModal);
 
-  function toggleModal(evt) {
+  function openModal() {
     const userFromStorage = localStorage.getItem(USER_NAME);
-    if (userFromStorage && refs.modal.classList.contains('is-hidden')) {
-      return;
-    }
-    refs.modal.classList.toggle('is-hidden');
+    if (userFromStorage && refs.modal.classList.contains('is-hidden')) return;
+    refs.modal.classList.remove('is-hidden');
     userLogout.classList.add('is-hidden');
-    // headerCont.classList.toggle('is-hidden');
-
-    // refs.openModalBtn.addEventListener('keydown', listEvent);
-    // refs.closeModalBtn.addEventListener('keydown', listEvent);
-
-    // function listEvent(evt) {
-    //   if (evt.key === 'Escape') {
-    //     refs.modal.classList.toggle('is-hidden');
-    //   }
-    // }
+    document.addEventListener('keydown', closeModalEsc);
   }
+  function closeModal() {
+    const userFromStorage = localStorage.getItem(USER_NAME);
+    if (userFromStorage && !refs.modal.classList.contains('is-hidden')) return;
+    refs.modal.classList.add('is-hidden');
+    document.removeEventListener('keydown', closeModalEsc);
+  }
+  const closeModalEsc = e => {
+    if (e.key === 'Escape') {
+      closeModal();
+    }
+  };
 })();
 
 signUp.addEventListener('click', () => {
