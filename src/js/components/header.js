@@ -29,7 +29,8 @@ function handlerChangeBtnMenu() {
 
 function booksOrdered() {
   const storageArr = JSON.parse(localStorage.getItem('storage-data'));
-  const booksInList = storageArr.length;
+  let booksInList = storageArr.length;
+  if (!storageArr) booksInList = 0;
   const qtyOrderedBooks = document.querySelectorAll('.purchased-books');
   qtyOrderedBooks.forEach(content => (content.textContent = booksInList));
 }
