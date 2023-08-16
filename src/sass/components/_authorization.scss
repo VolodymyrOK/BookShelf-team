@@ -51,7 +51,7 @@
   }
   transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
   &:hover {
-    scale: 0.95;
+    scale: 0.98;
   }
 }
 
@@ -89,7 +89,7 @@ body.dark .auth-logon:hover {
   }
   &:hover {
     transition: scale 250ms cubic-bezier(0.4, 0, 0.2, 1);
-    scale: 0.95;
+    scale: 0.98;
   }
 }
 
@@ -329,7 +329,7 @@ body.dark .auth-logon:hover {
       scale: 0;
     }
     &:hover {
-      scale: 0.95;
+      scale: 0.98;
     }
   }
 }
@@ -359,7 +359,7 @@ body.dark .auth-logon:hover {
       width: 184px;
     }
     &:hover {
-      scale: 0.95;
+      scale: 0.98;
     }
   }
 
