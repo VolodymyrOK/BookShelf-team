@@ -8,7 +8,9 @@ export default {
   singupBtn: document.querySelector('.js-authorization'),
   shoppingList: document.querySelector('.js-shopping-list'),
   homeLink: document.querySelector('.js-home-link'),
+
   checkTheme: document.querySelector('.check-theme'),
+
   formAuth: document.querySelector('.modal-form-auth'),
   inputAuthLogin: document.querySelector('[type="text"]'),
   inputAuthEmail: document.querySelector('[type="email"]'),
@@ -23,6 +25,7 @@ export default {
   userName: document.querySelector('.auth-logon-isuser-text'),
   userLogout: document.querySelector('.auth-logout'),
   userLogon: document.querySelector('.auth-logon'),
+
   categoryListEl: document.querySelector('.category__list'),
   scrollUp: document.querySelector('.scroll-up'),
   sliderArrowDown: document.querySelector('.slider-arrow-down'),
@@ -31,10 +34,14 @@ export default {
   bookList: document.querySelector('.book-list'),
   bookList0: document.querySelector('.books0'),
   mainBody: document.body,
+
   loadMoreBtn: document.querySelector('.load-more'),
+
   listTitle: document.querySelector('.book-list-title'),
   listTitleSpan: document.querySelector('.book-list-title-span'),
+
   sliderUkraine: document.querySelector('.slider-swiper'),
+
   homePage: document.querySelector('.home-page'),
   allModal: document.querySelector('#allModal'),
   storageButton: document.querySelector('.add-storage-button'),
