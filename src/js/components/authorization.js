@@ -113,7 +113,7 @@ function onClickAuthSubmit(evt) {
 
   evt.target.reset();
   localStorage.removeItem(KEY_AUTH_IN_STORAGE);
-  modalAuth.classList.toggle('is-hidden');
+  modalAuth.classList.toggle('is-hiddenauth');
 
   if (switchFromStorage === 'up') {
     createUserWithEmailAndPassword(
@@ -214,9 +214,9 @@ userLogon.addEventListener('click', () => {
 
 (() => {
   const refs = {
-    openModalBtn: document.querySelector('[data-modal-open]'),
-    closeModalBtn: document.querySelector('[data-modal-close]'),
-    modal: document.querySelector('[data-modal]'),
+    openModalBtn: document.querySelector('[data-modal-openauth]'),
+    closeModalBtn: document.querySelector('[data-modal-closeauth]'),
+    modal: document.querySelector('[data-modalauth]'),
   };
 
   refs.openModalBtn.addEventListener('click', openModal);
@@ -224,15 +224,17 @@ userLogon.addEventListener('click', () => {
 
   function openModal() {
     const userFromStorage = localStorage.getItem(USER_NAME);
-    if (userFromStorage && refs.modal.classList.contains('is-hidden')) return;
-    refs.modal.classList.remove('is-hidden');
+    if (userFromStorage && refs.modal.classList.contains('is-hiddenauth'))
+      return;
+    refs.modal.classList.remove('is-hiddenauth');
     userLogout.classList.add('is-hidden');
     document.addEventListener('keydown', closeModalEsc);
   }
   function closeModal() {
     const userFromStorage = localStorage.getItem(USER_NAME);
-    if (userFromStorage && !refs.modal.classList.contains('is-hidden')) return;
-    refs.modal.classList.add('is-hidden');
+    if (userFromStorage && !refs.modal.classList.contains('is-hiddenauth'))
+      return;
+    refs.modal.classList.add('is-hiddenauth');
     document.removeEventListener('keydown', closeModalEsc);
   }
   const closeModalEsc = e => {
