@@ -21,7 +21,7 @@ function handlerChangeBtnMenu() {
     iconClose.classList.add('is-hidden');
     iconBurger.classList.remove('is-hidden');
     mobileMenu.classList.add('is-hidden');
-    refs.blockAuth.style.display = 'none';
+    refs.blockAuth.removeAttribute('style');
     document.body.classList.remove('pos-fixed');
     isOpen = true;
   }
