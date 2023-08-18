@@ -97,7 +97,6 @@ function storageCheck() {
 
 // Функція для створення розмітки модалки
 function createMarkup(data) {
-  console.log(data);
   const bookModalImage = data.book_image;
   const bookTitle = data.title;
   const bookAuthor = data.author;
