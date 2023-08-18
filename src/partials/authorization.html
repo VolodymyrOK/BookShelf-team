@@ -1,6 +1,6 @@
 <div class="block">
   <div class="block-auth">
-    <button data-modal-open class="auth-logon" type="button">
+    <button data-modal-openauth class="auth-logon" type="button">
       <span class="auth-logon-noneuser">
         <span class="auth-logon-noneuser-text">Sign up</span>
         <svg class="auth-logon-icon" width="20" height="20">
@@ -15,7 +15,7 @@
         </svg>
       </span>
     </button>
-    <button data-modal-open class="auth-logout is-hidden" type="button">
+    <button data-modal-openauth class="auth-logout is-hidden" type="button">
       <span class="auth-logout-user">
         <span class="auth-logout-user-text">Log out</span>
         <svg class="auth-button-icon" width="20" height="20">
@@ -24,9 +24,13 @@
       </span>
     </button>
   </div>
-  <div class="backdrop-auth is-hidden" data-modal>
+  <div class="backdrop-auth is-hiddenauth" data-modalauth>
     <div class="modal-auth">
-      <button class="modal-button-auth-close" type="button" data-modal-close>
+      <button
+        class="modal-button-auth-close"
+        type="button"
+        data-modal-closeauth
+      >
         <svg class="modal-button-auth-close-icon">
           <use href="/src/images/icons.svg#x-close"></use>
         </svg>

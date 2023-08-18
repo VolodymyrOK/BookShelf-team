@@ -16,7 +16,7 @@ export default {
   submitBtn: document.querySelector('.sign-button-auth-submit'),
   signUp: document.querySelector('[data-sign-up]'),
   signIn: document.querySelector('[data-sign-in]'),
-  modalAuth: document.querySelector('[data-modal]'),
+  modalAuth: document.querySelector('[data-modalauth]'),
   userNoneBtn: document.querySelector('.auth-logon-noneuser'),
   userNameBtn: document.querySelector('.auth-logon-isuser'),
   userNone: document.querySelector('.auth-logon-noneuser-text'),
