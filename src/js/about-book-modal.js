@@ -97,9 +97,12 @@ function storageCheck() {
 
 // Функція для створення розмітки модалки
 function createMarkup(data) {
+  console.log(data);
   const bookModalImage = data.book_image;
   const bookTitle = data.title;
   const bookAuthor = data.author;
+  const bookDescription = data.description;
+  const bookDescriptionNone = 'There is no summary for this book.';
   const marketAmazon = data.buy_links[0].url;
   const marketAppleBooks = data.buy_links[1].url;
   const marketBookshop = data.buy_links[4].url;
@@ -109,7 +112,9 @@ function createMarkup(data) {
     <div class="info-modal">
       <h2 class="title-about-book-modal">${bookTitle}</h2>
       <p class="author-about-book-modal">${bookAuthor}</p>
-      <p class="text-about-book-modal">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, iure nam facere exercitationem quibusdam cum in quasi impedit perferendis porro. Vero quos minima doloribus magni corporis beatae ducimus officiis! Rerum?</p>
+      <p class="text-about-book-modal">${
+        data.description === '' ? bookDescriptionNone : bookDescription
+      }</p>
       <ul class="shop-modal-list">
         <li class="shop-modal-item"><a href="${marketAmazon}" target="_blank">
           <img
