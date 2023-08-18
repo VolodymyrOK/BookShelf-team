@@ -71,6 +71,7 @@ function createFullCart(arr, page) {
   const startIndex = (page - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const itemsOnPage = arr.slice(startIndex, endIndex);
+  const descriptionNone = 'There is no summary for this book.';
 
   const markup = itemsOnPage
     .map(
@@ -101,7 +102,9 @@ function createFullCart(arr, page) {
   <div class="shoplist-desc-container">
     <h4 class="shoplist-book-title">${title.trim()}</h4>
     <p class="shoplist-book-genre">${list_name.trim()}</p>
-    <p class="shoplist-book-description">${description.trim()}</p>
+    <p class="shoplist-book-description">${
+      description === '' ? descriptionNone : description.trim()
+    }</p>
     <div class="shoplist-icons">
       <p class="shoplist-book-author">${author.trim()}</p>
       <ul class="shoplist-icons-list">
