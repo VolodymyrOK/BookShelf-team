@@ -35,12 +35,8 @@ removeStorageBtn.addEventListener('click', onStorageDelete);
 homePage.addEventListener('click', onBookClick);
 
 function onBookClick(evt) {
-  if (
-    evt.target.nodeName !== 'DIV' &&
-    evt.target.className !== 'all-book-popup'
-  ) {
-    return;
-  }
+  if (evt.target.className !== 'all-book-popup') return;
+
   const booklId = evt.target.dataset.bookid;
   openModalId();
   createModal(booklId);
