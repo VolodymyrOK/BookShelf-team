@@ -2,7 +2,7 @@
   "name": "bookshelf",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://VolodymyrOK.github.io/BookShelf",
+  "homepage": "https://bookshelf-team.netlify.app/",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /BookShelf-team/"
